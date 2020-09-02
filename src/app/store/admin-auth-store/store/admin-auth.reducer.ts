@@ -5,6 +5,9 @@ export const ADMIN_AUTH_FEATURE_NAME = 'admin-auth';
 
 export interface AuthData {
   accessToken: string;
+  id: number;
+  iat: number;
+  exp: number;
 }
 
 export interface AdminAuthState {
@@ -22,7 +25,7 @@ const initialState: AdminAuthState = {
 
 export const adminAuthReducer = createReducer(initialState,
   on(login, state => ({...state, loading: true})),
-  on(loginSuccess, (state, authData: AuthData) => ({
+  on(loginSuccess, (state, {type, ...authData}: { type: string } & AuthData) => ({
     ...state,
     authData,
     loaded: true,
