@@ -5,8 +5,14 @@ export const ADMIN_AUTH_FEATURE_NAME = 'admin-auth';
 
 export interface AuthData {
   accessToken: string;
+  /**
+   * admin id in mySQL
+   */
   id: number;
   iat: number;
+  /**
+   * expiring at timestamp
+   */
   exp: number;
 }
 
